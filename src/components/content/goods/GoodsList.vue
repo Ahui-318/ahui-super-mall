@@ -2,7 +2,8 @@
   <div class="goods">
     <goods-list-item v-for="(item, index) in goods" 
                      :key="index"
-                     :gooditem="item" />
+                     :gooditem="item" 
+                     @load="imageLoad"/>
   </div>
 </template>
 
@@ -19,7 +20,12 @@ export default {
         return []
       }
     }
-  }
+  },
+  methods: {
+    imageLoad(){
+      this.$bus.$emit('itemImageLoad')
+    }
+  },
 }
 </script>
 

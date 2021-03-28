@@ -21,13 +21,15 @@ export function request(config) {
 export function requestNew(config) {
   return new Promise((resolve, reject) => {
     const intancenew = axios.create({
-      baseURL:'http://152.136.185.210:7878/api/m5'
-    })
-    intancenew(config)
-    .then((result) => {
-      resolve(result)
-    }).catch((err) => {
-      reject(err)
+      baseURL: "http://152.136.185.210:7878/api/m5"
+      //...
     });
+    intancenew(config)
+      .then(result => {
+        resolve(result);
+      })
+      .catch(err => {
+        reject(err);
+      });
   });
 }
