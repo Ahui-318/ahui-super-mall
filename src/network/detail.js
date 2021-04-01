@@ -9,6 +9,12 @@ export function getDetails(iid) {
     }
   });
 }
+export const getRecomment = () => {
+  return requestNew({
+    url:'/recommend'
+  })
+};
+
 
 // 整合数据，将后台发送的数据，进行整理归纳，定义一个类，接收数据
 // 使用时，new 出这个对象，然后，面向这个对象编程

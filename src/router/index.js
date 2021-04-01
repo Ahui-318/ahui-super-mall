@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+
+
 // 路由懒加载
 const Home = () => import("views/home/Home.vue");
 
@@ -13,6 +15,10 @@ const Cart = () => import("views/cart/Cart.vue");
 const Detail = () => import("views/detail/Detail.vue");
 
 Vue.use(VueRouter);
+// const original = VueRouter.prototype.push
+// VueRouter.prototype.push = function push(location) {
+//   return original.call(this, location).catch(err => err)
+// }
 
 const routes = [
   {

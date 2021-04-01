@@ -39,7 +39,7 @@ export default {
   methods: {
     itemClick() {
       // 使用动态路由
-      this.$router.replace(this.link);
+      this.$router.replace(this.link).catch(err => err);
     },
   },
 };

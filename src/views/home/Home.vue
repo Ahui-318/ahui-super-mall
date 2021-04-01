@@ -37,7 +37,7 @@ import NavBar from "components/common/navbar/NavBar.vue";
 import TabControl from "components/content/tabcontrol/TabControl";
 import GoodsList from "@/components/content/goods/GoodsList.vue";
 import Scroll from "@/components/common/scroll/Scroll.vue";
-import BackTop from "@/components/common/backTop/BackTop.vue";
+import { backTop } from "@/common/mixin";
 
 import HomeSwiper from "./childComps/HomeSwiper";
 import HomeRecommend from "./childComps/HomeRecommend.vue";
@@ -65,6 +65,7 @@ export default {
       saveY: 0,
     };
   },
+  mixins:[backTop],
   computed: {
     showGoodsList() {
       return this.goods[this.currentType].list;
@@ -78,7 +79,6 @@ export default {
     HomeFeature,
     GoodsList,
     Scroll,
-    BackTop,
   },
   created() {
     // 获取轮播图，推荐数据信息
@@ -111,6 +111,7 @@ export default {
     // console.log(this.saveY);
   },
   methods: {
+    // 防抖
     debounce(func, delay) {
       let timer = null;
       return function (...args) {
@@ -139,6 +140,7 @@ export default {
           this.currentType = "sell";
           break;
       }
+      // tabcontral保持一致，，，将index值赋值给两个组件内的currentIndex
       this.$refs.tabcontrol1.currentIndex = index;
       this.$refs.tabcontrol2.currentIndex = index;
     },
@@ -147,14 +149,10 @@ export default {
       this.offsettop = this.$refs.tabcontrol1.$el.offsetTop;
       // console.log(this.offsettop);
     },
-    // 返回顶部的事件监听
-    backTop() {
-      this.$refs.scroll.scrollTo(0, 0);
-    },
 
     contentScroll(position) {
       // console.log(position
-      // 根据上滑位置显示。是否禁用按钮
+      // 根据上滑位置显示。是否显示返回顶部按钮
       this.isShow = -position.y > 1000 ? true : false;
       // 根据上滑位置显示。是否显示tabcontrol
       this.isTabFixed = -position.y > this.offsettop;

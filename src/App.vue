@@ -3,7 +3,7 @@
     <keep-alive exclude="Detail">
       <router-view></router-view>
     </keep-alive>
-    <main-tab-bar />
+    <main-tab-bar v-show="isShow"/>
   </div>
 </template>
 
@@ -15,6 +15,15 @@ export default {
   components: {
     MainTabBar,
   },
+  computed:{
+    isShow(){
+      if (this.$route.path.includes('/detail')) {
+        return false
+      }else{
+        return true
+      }
+    }
+  }
 };
 </script>
 

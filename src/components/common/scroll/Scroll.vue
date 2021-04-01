@@ -36,7 +36,7 @@ export default {
       observeDOM: true,
       pullUpLoad: true,
     });
-    // 返回顶部按钮的显示和隐藏
+    // 返回实时的y值
     if (this.probeType === 2 || this.probeType === 3) {
       this.scroll.on("scroll", (position) => {
         this.$emit("scroll", position);
@@ -46,7 +46,7 @@ export default {
     if (this.pullUpLoad) {
       this.scroll.on("pullingUp", () => {
         this.$emit("pullingUp");
-        // console.log("234");
+        console.log("上拉加载更多");
       });
     }
   },
@@ -64,7 +64,7 @@ export default {
     },
     getScrollY() {
       return this.scroll.y ? this.scroll.y : 0;
-      console.log(this.scroll.y);
+      // console.log(this.scroll.y);
     },
   },
 };

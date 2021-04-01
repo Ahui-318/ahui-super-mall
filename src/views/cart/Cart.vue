@@ -1,15 +1,26 @@
 <template>
-  <div>
-    <h2>购物车</h2>
+  <div class="cart">
+    <!-- 购物车头 -->
+    <cart-nav-bar></cart-nav-bar>
+    <!-- 购物车内容列表 -->
+    <cart-list></cart-list>
+    <!-- 购物车综合栏 -->
+    <cart-bottom-bar></cart-bottom-bar>
   </div>
 </template>
 
 <script>
+import CartBottomBar from "./childcomponents/CartBottomBar.vue";
+import CartList from "./childcomponents/CartList";
+import CartNavBar from "./childcomponents/CartNavBar.vue";
 export default {
-  name:'cart'
-}
+  components: { CartNavBar, CartList, CartBottomBar },
+  name: "cart",
+};
 </script>
 
-<style>
-
+<style scoped>
+.cart {
+  height: calc(100vh - 49px - 40px);
+}
 </style>
